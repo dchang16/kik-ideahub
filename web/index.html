@@ -1,47 +1,53 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest">
-	<head>
-		<!-- Card info -->
-		<title>Starter Kit</title>
-		<meta name="description" content="My amazing card!">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<meta name="kik-prefer" content="true">
-		<link rel="kik-icon" href="/img/icon.png">
+<html>
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/default.css">
+    <style>
+      /* TODO */
+    </style>
+  </head>
 
-		<!-- Styles -->
-		<link rel="stylesheet" href="http://cdn.kik.com/app/1.10.0/default.css">
-		<link rel="stylesheet" href="/css/styles.css">
-	</head>
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar">
+        <div class="app-title">Home page</div>
+      </div>
+      <div class="app-content">
+        <div class="app-section">
+          <div class="app-button" data-target="page2">Go to Page 2</div>
+        </div>
+      </div>
+    </div>
 
-	<body>
-		<!-- Pages -->
+    <div class="app-page" data-page="page2">
+      <div class="app-topbar">
+        <div class="app-button left" data-back="true">Back</div>
+        <div class="app-title">Page 2</div>
+      </div>
+      <div class="app-content">
+        Page 2 is lonely
+      </div>
+    </div>
 
-		<div class="app-page" data-page="home">
-			<div class="app-topbar">
-				<div class="app-title">Home page</div>
-			</div>
-			<div class="app-content">
-				<div class="app-section">
-					<div class="app-button" data-target="page2">Go to Page 2</div>
-				</div>
-			</div>
-		</div>
+    <script src="js/zepto.js"></script>
+    <script src="app.js"></script>
+    <script>
+      App.populator('home', function (page) {
+        // put stuff here
+      });
 
-		<div class="app-page" data-page="page2">
-			<div class="app-topbar">
-				<div class="app-button left" data-back="true">Back</div>
-				<div class="app-title">Page 2</div>
-			</div>
-			<div class="app-content">
-				Page 2 is lonely
-			</div>
-		</div>
+      App.populator('page2', function (page) {
+        // put stuff here
+      });
 
-		<!-- Scripts -->
-		<script src="/zerver/API.js"></script>
-		<script src="http://zeptojs.com/zepto.min.js"></script>
-		<script src="http://cdn.kik.com/cards/0.11.2/cards.js"></script>
-		<script src="http://cdn.kik.com/app/1.10.0/app.js"></script>
-		<script src="/js/main.js"></script>
-	</body>
+      try {
+        App.restore();
+      }
+      catch (err) {
+        App.load('home');
+      }
+    </script>
+  </body>
 </html>
