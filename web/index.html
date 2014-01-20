@@ -18,22 +18,43 @@
 
 		<div class="app-page" data-page="home">
 			<div class="app-topbar">
-				<div class="app-title">Home page</div>
+                <div class="app-button left" data-back="true">Back</div>
+				<div class="app-title">Idea Hub</div>
+                <div class="app-button right" data-target="upload">Upload</div>
 			</div>
-			<div class="app-content">
-				<div class="app-section">
-					<div class="app-button" data-target="page2">Go to Page 2</div>
-				</div>
-			</div>
+		<div class="app-content">
+            <div class="img-grid">
+                <div class='img placeholder thumbnail'>
+                </div>
+                <div class='img placeholder thumbnail'>
+                </div>
+                <div class='img placeholder thumbnail'>
+                </div>
+                <div class='img placeholder thumbnail'>
+                </div>
+                <div class='img placeholder thumbnail'>
+                </div>
+                <div class='img placeholder thumbnail'>
+                </div>
+                <div class='img placeholder thumbnail'>
+                </div>
+                <div class='img placeholder thumbnail'>
+                </div>
+            </div>
 		</div>
 
-		<div class="app-page" data-page="page2">
+		<div class="app-page" data-page="upload" data-target="upload">
 			<div class="app-topbar">
 				<div class="app-button left" data-back="true">Back</div>
-				<div class="app-title">Page 2</div>
+				<div class="app-title"></div>
+        <div class="app-button right">Upload</div>
 			</div>
 			<div class="app-content">
-				Page 2 is lonely
+                <div class="app-section">
+                <input class="app-input" placeholder="Idea">
+                <textarea class="app-input" placeholder="Pitch"></textarea>
+                <div class="app-button">Upload</div>
+              </div>
 			</div>
 		</div>
 
