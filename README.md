@@ -1,17 +1,20 @@
-# Welcome to your starter kit
+OVERVIEW
 
-### Setup
+Tired of spending hours, days, configuring servers and getting all of your dependencies working in harmony just to setup a simple website?
 
-1. Install Node.js (v0.8+) from [http://nodejs.org/](http://nodejs.org/)
-2. Run these commands:
+This web template is designed such that everything is setup for you so you can just simply pull and run it from your node command prompt! 
 
-```sh
-git clone git://github.com/kikinteractive/starter-kit.git
-cd starter-kit
-npm install
-```
 
-### Run debug server
+Frontend: HTML5, CSS, and Javascript/jQuery
 
-1. Run this command: `npm start`
-2. Go to [localhost:5000](http://localhost:5000/) in your browser to see your app
+Structure: Backbone.js
+
+Backend: Node.js express.js passport.js
+
+DB: mongoDB
+
+Dependecies: 
+
+Download node.js: http://nodejs.org/download/
+
+Download mongoDB: http://www.mongodb.org/downloads
