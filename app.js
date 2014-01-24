@@ -49,7 +49,7 @@ app.configure('production', function(){
  passport.deserializeUser(Account.deserializeUser());
 
 // Connect mongoose
-mongoose.connect('mongodb://localhost/myapp');
+mongoose.connect("mongodb://d26chang:Xie6357989@troup.mongohq.com:10033/ideahub");
 
 // Setup routes
 require('./routes')(app);
