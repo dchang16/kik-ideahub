@@ -1,37 +1,13 @@
 <!doctype html>
 <html>
 <head>
-	<title>Backbone Template</title>
+	<title>Kik Idea Hub</title>
 	<link rel="shortcut icon" href="img/favicon.ico">
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<link rel="stylesheet" href="/css/owl.carousel.css">
-	<link rel="stylesheet" href="/css/owl.theme.css">
-	<link href="css/stylish-portfolio.css" rel="stylesheet">
-	<link rel="stylesheet" href="/css/custom.css">
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">    
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
-  <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-reorder"></i></a>
-  <div id="sidebar-wrapper">
-  </div>
-  <div id="top" class="header">
-  </div>
-  <div class='callout' id ='login'>
-  </div>
-  <div class="centertext">
-  </div>
-  <div id='carousel'>
-  </div>
-  <div id="services" class="services">
-  </div>
-  <div id='gallery'>
-  </div>
-  <div id="contact" class="map">
-  </div>
-  <footer id='footer'>
-
-  </footer>
+  <h1>Cool</h1>
 
   <script src="/js/jquery.min.js"></script>
   <script src="/js/jquery.js"></script>
@@ -39,67 +15,13 @@
   <script src="/js/backbone-min.js"></script>
   <script src="/js/handlebars_1.0.js"></script>
   <script src="/js/bootstrap.js"></script>
-  <script src="/js/owl.carousel.js"></script>
   <script src="/views/views.js"></script>
   <script src="/routes/router.js"></script>
   <script src="/models/model.js"></script>
   <script src="http://cdn.kik.com/cards/0.11.2/cards.js"></script>
   <script src="http://cdn.kik.com/app/1.10.0/app.js"></script>
   <script>
-    var menu = new MenuView();
-    var home = new HomeView();
-    var login = new LoginView();
-    var carousel = new CarouselView();
-    var services = new ServicesView();
-    var gallery = new GalleryView();
-    var contact = new ContactView();
-    var footer = new FooterView();
-
-    menu.render();
-    home.render();
-    login.render();
-    carousel.render();
-    services.render();
-    gallery.render();
-    contact.render();
-    footer.render();
-
     Backbone.history.start();
-
   </script>
-
-  <script>
-  $('html').on('click','#menu-close',function(e) {
-    e.preventDefault();
-    $("#sidebar-wrapper").toggleClass("active");
-  });
-  </script>
-  <script>
-  $("#menu-toggle").on('click',function(e) {
-    e.preventDefault();
-    $("#sidebar-wrapper").toggleClass("active");
-  });
-  </script>
-
- <script type="text/javascript">
-    
-     $(document).on('click', 'a[href*=#]:not([href=#])', function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-          || location.hostname == this.hostname) {
-
-          var target = $(this.hash);
-        console.log(target);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-        if (target.length) {
-          $('html,body').animate({
-            scrollTop: target.offset().top
-          }, 1000);
-          return false;
-        }
-      }
-      });
-
-  </script>
-
 </body>
 </html>
