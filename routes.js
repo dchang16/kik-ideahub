@@ -10,6 +10,35 @@ module.exports = function (app) {
         res.render('upload',{user : req.user });
     });
 
+    app.post('/upload', function(req, res, next){ 
+        passport.authenticate('local', function(err, user, info) {
+            if (err) { return next(err);}
+            var imgPath = req.files.ideaImage.path;
+            var idea = new Idea;
+            idea.img.title = req.body.title;
+            idea.img.pitch = req.body.pitch;
+            idea.img.positions = [req.body.positions];
+            idea.img.website = req.body.website;
+            idea.img.industry = req.body.industry;
+            idea.img.data = fs.readFileSync(imgPath);
+            idea.img.contentType = req.files.ideaImage.type;
+            idea.save(function(err, idea){
+                if(err) { console.log("err: " + err); return next(err); }
+                else{
+                    //console.log(req.user);
+                    req.user.ideas.push(idea);
+                    req.user.save(function(err, req) {
+                         if(err) { console.log("err: " + err); return next(err); }
+                         else{
+                            //console.log(req.user); 
+                         }
+                    });
+                    res.render('main', {user : req.user });
+                }
+            });
+        })(req, res, next);
+    });
+
     app.get('/', function (req, res) {
         res.render('home', { user : req.user });
     });
@@ -20,7 +49,8 @@ module.exports = function (app) {
                 { username : req.body.username,
                   university : req.body.university,
                   phone : req.body.phone,
-                  email : req.body.email
+                  email : req.body.email,
+                  ideas : []
                 }
             ),
             req.body.password,

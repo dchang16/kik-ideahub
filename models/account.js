@@ -7,7 +7,7 @@ var Account = new Schema({
     university: String,
     phone: String,
     email: String,
-    ideas: [Idea]
+    ideas: [Idea.schema]
 });
 
 Account.plugin(passportLocalMongoose);
