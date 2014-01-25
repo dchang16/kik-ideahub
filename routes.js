@@ -109,4 +109,7 @@ module.exports = function (app) {
         res.render('search', { user : req.user });
     });
 
+    app.get('/idea', function(req, res) {
+        res.render('idea', { user : req.user });
+    });
 };
