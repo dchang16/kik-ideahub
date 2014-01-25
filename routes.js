@@ -43,7 +43,7 @@ module.exports = function (app) {
         })(req, res, next);
     });
 
-    app.get('/', function (req, res) {
+    app.get('', function (req, res) {
         res.render('index', { user : req.user });
     });
 
