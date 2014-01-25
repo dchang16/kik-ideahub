@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	div(class='container' style='padding-top:40%;')
+	div(class='container' style='padding-top:150px;')
 		button(class='btn btn-primary btn-lg btn-block' data-toggle='collapse' data-target='#loginform') Login
 		form(class='collapse' id='loginform' action='/login' method='post')
 			input(type='text' class='form-control' name='username' placeholder='Username')
@@ -13,7 +13,103 @@ block content
 			input(type='text' class='form-control' name='username' placeholder='Username')
 			input(type='password' class='form-control' name='password' placeholder='Password')
 			select(class='form-control' name='university')
-				option University of Waterloo
+				option(value='Acadia University') Acadia University
+				option(value='Algonquin College') Algonquin College
+				option(value='Ashton College') Ashton College
+				option(value='Assumption University') Assumption University
+				option(value='Athabasca University') Athabasca University
+				option(value='Augustana University College') Augustana University College
+				option(value='Bishops University') Bishops University
+				option(value='Bow Valley College') Bow Valley College
+				option(value='Brandon University') Brandon University
+				option(value='Brescia College') Brescia College
+				option(value='British Columbia Institute of Technology') British Columbia Institute of Technology
+				option(value='British Columbia Open University') British Columbia Open University
+				option(value='Brock University') Brock University
+				option(value='Camosun College') Camosun College
+				option(value='Campion College') Campion College
+				option(value='Canadian College of Business & Computers') Canadian College of Business & Computers
+				option(value='Canadian Mennonite University') Canadian Mennonite University
+				option(value='Capilano College') Capilano College
+				option(value='Carleton University') Carleton University
+				option(value='Centennial College') Centennial College
+				option(value='College of New Caledonia') College of New Caledonia
+				option(value='College of the Rockies') College of the Rockies
+				option(value='Columbia College') Columbia College
+				option(value='Concordia University') Concordia University
+				option(value='Concordia University College of Alberta') Concordia University College of Alberta
+				option(value='Conestoga College') Conestoga College
+				option(value='Dalhousie University') Dalhousie University
+				option(value='DeVry Institute of Technology') DeVry Institute of Technology
+				option(value='Douglas College') Douglas College
+				option(value='Durham College') Durham College
+				option(value='Emily Carr Institute of Art + Design') Emily Carr Institute of Art + Design
+				option(value='First Nations University of Canada') First Nations University of Canada
+				option(value='George Brown College') George Brown College
+				option(value='Humber College') Humber College
+				option(value='Huron University College') Huron University College
+				option(value="King's College") Kings College
+				option(value='Kingston College') Kingston College
+				option(value='Lakehead University') Lakehead University
+				option(value='Langara College') Langara College
+				option(value='Lansbridge University') Lansbridge University
+				option(value='Luther College') Luther College
+				option(value='MacEwan University') MacEwan University
+				option(value='Malaspina University College') Malaspina University College
+				option(value='McGill University') McGill University
+				option(value='McMaster University') McMaster University
+				option(value='Mount Royal College') Mount Royal College
+				option(value='Northern Alberta Institute of Technology') Northern Alberta Institute of Technology
+				option(value='Northern Lights College') Northern Lights College
+				option(value='North Island College') North Island College
+				option(value='Nova Scotia College of Art and Design') Nova Scotia College of Art and Design
+				option(value='Okanagan University College') Okanagan University College
+				option(value='Ontario College of Art and Design') Ontario College of Art and Design
+				option(value="Queen's University") Queens University
+				option(value='Quest University') Quest University
+				option(value='Ryerson Polytechnic University') Ryerson Polytechnic University
+				option(value='Seneca College') Seneca College
+				option(value='Sheridan College') Sheridan College
+				option(value='Simon Fraser University') Simon Fraser University
+				option(value='Southern Alberta Institute of Technology') Southern Alberta Institute of Technology
+				option(value='St. Anne University') St. Anne University
+				option(value='St. Clair College') St. Clair College
+				option(vaue='St. Francis Xavier University') St. Francis Xavier University
+				option(value='St. Marys University') St. Marys University
+				option(value='St. Paul University') St. Paul University
+				option(value='St. Thomas University') St. Thomas University
+				option(value='Trent University') Trent University
+				option(value='Université de Montréal') Université de Montréal
+				option(value='University College of Saint-Boniface') University College of Saint-Boniface
+				option(value='University College of the Cariboo') University College of the Cariboo
+				option(value='University of Alberta') University of Alberta
+				option(value='University of British Columbia')	University of British Columbia
+				option(value='University of Calgary') University of Calgary
+				option(value='University of Guelph') University of Guelph
+				option(value='University of Lethbridge') University of Lethbridge
+				option(value='University of Manitoba') University of Manitoba
+				option(value='University of Moncton') University of Moncton
+				option(value='University of New Brunswick') University of New Brunswick
+				option(value='University of New Brunswick, Saint John') University of New Brunswick, Saint John
+				option(value='University of Northern British Columbia') University of Northern British Columbia
+				option(value='University of Ontario Institute of Technology') University of Ontario Institute of Technology
+				option(value='University of Ottawa') University of Ottawa
+				option(value='University of Prince Edward Island') University of Prince Edward Island
+				option(value='University of Québec') University of Québec
+				option(value='University of Regina') University of Regina
+				option(value='University of Saskatchewan') University of Saskatchewan
+				option(value='University of St. Jeromes College') University of St. Jeromes College
+				option(value='University of Sudbury') University of Sudbury
+				option(value='University of Toronto') University of Toronto
+				option(value='University of Victoria') University of Victoria
+				option(value='University of Waterloo') University of Waterloo
+				option(value='University of Western Ontario') University of Western Ontario
+				option(value='University of Windsor') University of Windsor
+				option(value='University of Winnipeg') University of Winnipeg
+				option(value='Wilfrid Laurier University') Wilfrid Laurier University
+				option(value='York University') York University
+				option(value='Yukon College') Yukon College
+
 			input(type='text' class='form-control' name='email' placeholder='Email')
 			input(type='text' class='form-control' name='phonenumber' placeholder='Phone Number')
 			input(type='submit' class='btn btn-primary btn-block' value='Register')
