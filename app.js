@@ -1,26 +1,23 @@
 var path = require('path'),
     express = require('express'),
+    http = require('http'),
     mongoose = require('mongoose'),
     passport = require('passport'),
-    logfmt = require('logfmt');
     LocalStrategy = require('passport-local').Strategy;
 
 var app = express();
 
-var errorHandler = require('express-error-handler'),
-  handler = errorHandler({
-    static: {
-      '404': 'uploads/404.html',
-	  '500': 'uploads/500.html'
-    }
-  });
 // Configuration
 app.configure(function(){
     app.set('views', __dirname + '/views');
+    app.set('view engine', 'jade');
+    app.set('view options', { layout: false });
+
+    app.use(express.logger());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
 
-    app.use(express.cookieParser('dsadadsa'));
+    app.use(express.cookieParser('your secret here'));
     app.use(express.session());
 
     app.use(passport.initialize());
@@ -28,8 +25,6 @@ app.configure(function(){
 
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
-    app.use('/public', express.static(__dirname + '/public'));
-
 });
 
 app.configure('development', function(){
@@ -41,21 +36,19 @@ app.configure('production', function(){
 });
 
 // Configure passport
- var Account = require('./models/account');
+var Account = require('./models/account');
 
- passport.use(new LocalStrategy(Account.authenticate()));
+passport.use(new LocalStrategy(Account.authenticate()));
 
- passport.serializeUser(Account.serializeUser());
- passport.deserializeUser(Account.deserializeUser());
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 // Connect mongoose
-mongoose.connect("mongodb://d26chang:hackathon@troup.mongohq.com:10033/ideahub");
+mongoose.connect('mongodb://d26chang:hackathon@troup.mongohq.com:10033/ideahub');
 
 // Setup routes
 require('./routes')(app);
 
-var port = process.env.PORT || 5000;
-
-app.listen(port, function() {
-    console.log("Listening on " + port);
-})
+http.createServer(app).listen(3000, '127.0.0.1', function() {
+    console.log("Express server listening on %s:%d in %s mode", '127.0.0.1', 3000, app.settings.env);
+});

@@ -1,0 +1,33 @@
+doctype 5
+html
+  head
+    title Passport Local Mongoose Example
+    link(rel='stylesheet', href='css/bootstrap.css')
+    link(rel='stylesheet', href='css/custom.css')
+    link(rel='styleshet', href='css/style.css')
+    link(rel='stylesheet', href='css/jquery.mobile-1.4.0.css')
+    block scripts
+      script(src='js/jquery.min.js')
+      script(src='js/bootstrap.min.js')
+      script(src='js/jquery.mobile-1.4.0.js')
+      script(src='js/underscore.js')
+      script(scc='js/backbone-min.js')
+      script(src='http://cdn.kik.com/cards/0.11.2/cards.js')
+      script(src='http://cdn.kik.com/app/1.10.0/app.js')
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.brand(href="/") Example
+          ul.nav
+            if (typeof(user) == 'undefined')
+              li
+                a(href="/register") Register
+              li
+                a(href="/login") Log In
+            else
+              li
+                a(href="/logout") Log Out
+    
+    .container
+      block content
