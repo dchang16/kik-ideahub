@@ -1,21 +1,11 @@
 var passport = require('passport'),
     Account = require('./models/account'),
     Idea = require('./models/idea'),
-	fs = require("fs"),
-	formidable = require("formidable");
+    fs = require("fs");
 
 module.exports = function (app) {
     
     app.get('/upload', function(req,res){
-        //Idea.findOne({ '_id' : '52e3442a23ce910d78000001'}, '_id img', function(err, idea){
-            //if (err) throw err;
-            //console.log("%s", idea.img);
-            //res.writeHead(200, {'Content-Type': 'text/html'});
-            //res.write('<html><body><img src="data:image/png;base64,')
-            //res.write(new Buffer(idea.img.data).toString('base64'));
-            //res.end(' "</body></html>');
-            //return;
-        //});
         res.render('upload',{user : req.user });
     });
 
@@ -31,6 +21,7 @@ module.exports = function (app) {
             idea.industry = req.body.industry;
             idea.img.data = fs.readFileSync(imgPath);
             idea.img.contentType = req.files.ideaImage.type;
+            idea.uid = req.user._id;
             idea.save(function(err, idea){
                 if(err) { console.log("err: " + err); return next(err); 
                 }else{
@@ -94,7 +85,7 @@ module.exports = function (app) {
 	app.get('/main', function(req, res, next) {
 	  passport.authenticate('local', function(err, user, info) {
 		if (err) { return next(err); }
-
+        console.log(req.user);
         Idea.findRecentIdeas(function (err, collection){
             if(err){
                 res.send({found: false, error: "No ideas found" });
