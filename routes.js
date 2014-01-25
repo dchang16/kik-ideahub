@@ -48,6 +48,10 @@ module.exports = function (app) {
 	    })(req, res, next);
 	});
 
+    app.get('/search', function(req, res) {
+        res.render('search', { user : req.user });
+    });
+
 
 
 };
