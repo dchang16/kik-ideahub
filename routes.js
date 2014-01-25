@@ -6,10 +6,6 @@ module.exports = function (app) {
         res.render('home', { user : req.user });
     });
 
-    app.get('/register', function(req, res) {
-		res.render('register', { });		
-    });
-
     app.post('/register', function(req, res) {
         Account.register(
             new Account(
@@ -23,19 +19,20 @@ module.exports = function (app) {
             function(err, account) {
             
 			if (err) {
-                return res.render('register', { account : account });
+                return res.render('home', { account : account });
             }
-
-            res.redirect('/');
+            else {
+          	  res.redirect('/main');
+            }
         });
     });
 
-    app.get('/login', function(req, res) {
-        res.render('login', { user : req.user });
+    app.get('/home', function(req, res) {
+        res.render('home', { user : req.user });
     });
 
     app.post('/login', passport.authenticate('local'), function(req, res) {
-        res.redirect('/');
+        res.redirect('/main');
     });
 
     app.get('/logout', function(req, res) {
@@ -43,26 +40,14 @@ module.exports = function (app) {
         res.redirect('/');
     });
 	
-	app.get('/home', function(req, res, next) {
+	app.get('/main', function(req, res, next) {
 	  passport.authenticate('local', function(err, user, info) {
 		if (err) { return next(err); }
-		if (!user) { return res.redirect('/login'); }
-		  res.render('home', { user : req.user });
+		res.render('main', { user : req.user });
+		console.log(req.user);
 	    })(req, res, next);
 	});
 
-	
-	app.get('/login', function(req, res, next) {
-	  passport.authenticate('local', function(err, user, info) {
-		if (err) { return next(err); }
-		if (!user) { return res.redirect('/login'); }
-		req.logIn(user, function(err) {
-		if (err) { return next(err); }
-		  return res.redirect('/users/' + user.username);
-		});
-	  })(req, res, next);
-	});
-	
 
 
 };
