@@ -10,7 +10,8 @@ var Idea = new Schema({
     positions: [Position],
     website: String,
     uploadDate: {type: Date, default: Date.now},
-    industry: String
+    industry: String,
+    img: { data: Buffer, contentType: String }
 });
 
 module.exports = mongoose.model('Idea', Idea);

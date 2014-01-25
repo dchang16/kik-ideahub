@@ -1,5 +1,9 @@
 var passport = require('passport'),
-    Account = require('./models/account');
+    Account = require('./models/account'),
+    Idea = require('./models/idea'),
+	fs = require("fs"),
+	formidable = require("formidable");
+
 module.exports = function (app) {
     
     app.get('/upload', function(req,res){
@@ -52,6 +56,35 @@ module.exports = function (app) {
 	    })(req, res, next);
 	});
 
+    app.get('/uploadtest', function(req, res) {
+        //Idea.findOne({ '_id' : '52e3442a23ce910d78000001'}, '_id img', function(err, idea){
+            //if (err) throw err;
+            //console.log("%s", idea.img);
+            //res.writeHead(200, {'Content-Type': 'text/html'});
+            //res.write('<html><body><img src="data:image/png;base64,')
+            //res.write(new Buffer(idea.img.data).toString('base64'));
+            //res.end(' "</body></html>');
+            //return;
+        //});
+        res.render('uploadtest', { user : req.user });
+    });
 
+    app.post('/uploadtest', function(req, res) {
+        var imgPath = req.files.ideaImage.path;
+        var idea = new Idea;
+        idea.img.data = fs.readFileSync(imgPath);
+        idea.img.contentType = req.files.ideaImage.type;
+        idea.save(function(err){
+            if(err) throw err; 
+        });
+        res.render('home', { user : req.user });
+        //fs.readFile(req.files.ideaImage.path, function (err, data) {
 
+            //var newPath = __dirname + "/uploads/imagetemp";
+            //fs.writeFile(newPath, data, function (err) {
+                //console.log(err);
+                //res.redirect('home');
+            //});
+        //});
+    });
 };
