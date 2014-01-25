@@ -16,12 +16,12 @@ module.exports = function (app) {
             var idea = new Idea;
             idea.title = req.body.title;
             idea.pitch = req.body.pitch;
-            idea.positions = [req.body.positions];
             idea.website = req.body.website;
             idea.industry = req.body.industry;
             idea.img.data = fs.readFileSync(imgPath);
             idea.img.contentType = req.files.ideaImage.type;
             idea.uid = req.user._id;
+            idea.university = req.user.university;
             idea.save(function(err, idea){
                 if(err) { console.log("err: " + err); return next(err); 
                 }else{
@@ -121,6 +121,28 @@ module.exports = function (app) {
     app.get('/search', function(req, res) {
         res.render('search', { user : req.user });
     });
+
+    app.post('/search', function(req, res, next) {
+        passport.authenticate('local', function(err, user, info) {
+            if (err) { return next(err); }
+            Idea.filterResults(
+                req.body.title,
+                req.body.university,
+                req.body.industry,
+                function (err, collection){
+                    if(err){
+                        res.send({found: false, error: "No ideas found" });
+                    }else{
+                        console.log("BEGIN------------GET IDEAS BY ID----------------------BEGIN");
+                        console.log(collection);
+                        console.log("END--------------GET IDEAS BY ID------------------------END");
+                        res.render('main', { user : req.user, collection : collection } );
+                    }
+                }
+            );
+        })(req, res, next);
+    });
+
 
     app.get('/idea:id', function(req, res) {
         var id = req.params.id.substring(1);
