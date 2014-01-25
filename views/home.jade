@@ -1,13 +1,20 @@
 extends layout
 
 block content
-
-	div(data-role='collapsible' data-colapsed-icon='carat-d' data-expanded-icon='carat-u' data-iconpos='right' data-theme='b' data-content-theme='b' data-collapsed='true')
-		h4(align='center') Register
-		form(action='/register', method='post')
-			input(type='text' name='username' placeholder='Username')
-			input(type='password' name='password' placeholder='Password')
-			input(type='email' name='email' placeholder='Email')
-			input(type='text' name='phone' placeholder='Phone Number')
-			input(type='text' name='university' placeholder='University')
-			input(type='submit' class='btn btn-primary' value='Register')
+	div(class='container' style='padding-top:40%;')
+		button(class='btn btn-primary btn-lg btn-block' data-toggle='collapse' data-target='#loginform') Login
+		form(class='collapse' id='loginform' action='/login' method='post')
+			input(type='text' class='form-control' name='username' placeholder='Username')
+			input(type='password' class='form-control' name='password' placeholder='Password')
+			input(type='submit' class='btn btn-primary btn-block' value='Login')
+		br
+		button(class='btn btn-default btn-lg btn-block' data-toggle='collapse' data-target='#registerform') Register
+		form(class='collapse' id='registerform' action='/register' method='post')
+			input(type='text' class='form-control' name='username' placeholder='Username')
+			input(type='password' class='form-control' name='password' placeholder='Password')
+			select(class='form-control' name='university')
+				option University of Waterloo
+			input(type='text' class='form-control' name='email' placeholder='Email')
+			input(type='text' class='form-control' name='phonenumber' placeholder='Phone Number')
+			input(type='submit' class='btn btn-primary btn-block' value='Register')
+		
