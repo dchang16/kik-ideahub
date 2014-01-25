@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 var Idea = new Schema({
     title: String,
     pitch: String,
+    uid: String,
     positions: [String],
     website: String,
     uploadDate: {type: Date, default: Date.now},
@@ -14,7 +15,6 @@ var Idea = new Schema({
     img: { data: Buffer, contentType: String }
 });
 
-module.exports.schema = Idea;
 module.exports = mongoose.model('Idea', Idea);
 
 
