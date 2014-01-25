@@ -43,8 +43,8 @@ module.exports = function (app) {
         })(req, res, next);
     });
 
-    app.get('', function (req, res) {
-        res.render('index', { user : req.user });
+    app.get('/', function (req, res) {
+        res.render('home', { user : req.user });
     });
 
     app.post('/register', function(req, res) {
@@ -64,7 +64,7 @@ module.exports = function (app) {
                 return res.render('home', { account : account });
             }
             else {
-          	  res.redirect('/main');
+          	  res.redirect('/home');
             }
         });
     });

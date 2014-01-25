@@ -15,9 +15,11 @@ body{
 }
 
 .idea {
+	overflow:hidden;
 	height:20%;
 	margin-right:1%;
 	margin-left:1%;
 	margin-bottom: 20px;
 	border:3px solid #ddd;
+	max-height:200px;
 }

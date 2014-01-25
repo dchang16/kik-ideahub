@@ -45,7 +45,7 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // Connect mongoose
-// mongoose.connect('mongodb://d26chang:hackathon@troup.mongohq.com:10033/ideahub');
+mongoose.connect('mongodb://d26chang:hackathon@troup.mongohq.com:10033/ideahub');
 
 // Setup routes
 require('./routes')(app);
