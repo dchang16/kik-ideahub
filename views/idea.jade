@@ -17,7 +17,7 @@ block content
 				li
 					a(href='/upload') Upload
 
-	div(class='container' style='padding-top: 30px;')
+	div(class='container' style='padding-top: 30px;' id='#{collection._id}')
 		h1 #{collection.title}
 		img(src='data:image/png;base64,' + collection.img.data.toString('base64') style='width:200px;')
 		br
@@ -25,5 +25,7 @@ block content
 		p #{collection.pitch}
 		label Looking for:
 		p #{collection.positions}
-		
+		button(class='btn btn-primary' id='likeBtn') Like
+		p(id='votemsg')
+
 

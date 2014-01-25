@@ -116,4 +116,27 @@ module.exports = function (app) {
             }
         });
     });
+
+    app.get('/like:id', function(req,res) {
+        var id = req.params.id.substring(1);
+        var score;
+        Idea.findIdeaByID(id, function(err, collection) {
+            if(err) {
+                console.log('Failed');
+            }
+            else {
+                score = collection.score;
+                Idea.updateScore(id, score + 1, function(err, instance) {
+                    if(err) {
+                        console.log('Could not update score')
+                    }
+                    else {
+                        res.render('idea', {collection : instance})
+                        console.log('Voted');
+                    }
+                })
+            }
+        })
+        
+    })
 };
