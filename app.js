@@ -3,6 +3,7 @@ var path = require('path'),
     http = require('http'),
     mongoose = require('mongoose'),
     passport = require('passport'),
+    logfmt = require('logfmt'),
     LocalStrategy = require('passport-local').Strategy;
 
 var app = express();

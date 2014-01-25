@@ -1,6 +1,5 @@
 var passport = require('passport'),
     Account = require('./models/account');
-var login = false;
 module.exports = function (app) {
     
     app.get('/', function (req, res) {
@@ -8,9 +7,7 @@ module.exports = function (app) {
     });
 
     app.get('/register', function(req, res) {
-        login = true;
-		res.render('register', { });
-		
+		res.render('register', { });		
     });
 
     app.post('/register', function(req, res) {
@@ -29,12 +26,10 @@ module.exports = function (app) {
     });
 
     app.post('/login', passport.authenticate('local'), function(req, res) {
-		login = true;
         res.redirect('/');
     });
 
     app.get('/logout', function(req, res) {
-		login = false;
         req.logout();
         res.redirect('/');
     });
@@ -43,13 +38,10 @@ module.exports = function (app) {
 	  passport.authenticate('local', function(err, user, info) {
 	  console.log(login);
 		if (err) { return next(err); }
-		if (login == false) { return res.redirect('/login'); }
-		res.render('home', { user : req.user });
-	  })(req, res, next);
+		if (!user) { return res.redirect('/login'); }
+		  res.render('home', { user : req.user });
+	    })(req, res, next);
 	});
-    app.post('/test', passport.authenticate('local'), function(req, res) {
-        res.redirect('/');
-    });
 
 	
 	app.get('/login', function(req, res, next) {
@@ -57,7 +49,7 @@ module.exports = function (app) {
 		if (err) { return next(err); }
 		if (!user) { return res.redirect('/login'); }
 		req.logIn(user, function(err) {
-		  if (err) { return next(err); }
+		if (err) { return next(err); }
 		  return res.redirect('/users/' + user.username);
 		});
 	  })(req, res, next);
