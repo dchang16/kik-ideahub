@@ -52,4 +52,22 @@ function findRecentIdeas(callback) {
     );
 }
 
+function findIdeaByID(id, callback) {
+	module.exports.findById(id, 
+		function(err, collection) {
+			var instance = ({
+				_id : collection._id,
+				title : collection.title,
+				pitch : collection.pitch,
+				positions : collection.positions,
+				uploadDate : collection.uploadDate,
+				img :  {data: collection.img.data, contentType: collection.img.contentType},
+				industry : collection.industry,
+				score : collection.score
+			})
+			callback(null, instance);
+		})
+}
+
 module.exports.findRecentIdeas = findRecentIdeas;
+module.exports.findIdeaByID = findIdeaByID;

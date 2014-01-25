@@ -109,7 +109,16 @@ module.exports = function (app) {
         res.render('search', { user : req.user });
     });
 
-    app.get('/idea', function(req, res) {
-        res.render('idea', { user : req.user });
+    app.get('/idea:id', function(req, res) {
+        var id = req.params.id.substring(1);
+        console.log('id is' + id);
+        Idea.findIdeaByID(id, function(err, collection) {
+            if(err) {
+                console.log('Could not find ID')
+            }
+            else {
+                res.render('idea', {collection : collection});
+            }
+        });
     });
 };
