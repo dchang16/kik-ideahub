@@ -11,7 +11,16 @@ module.exports = function (app) {
     });
 
     app.post('/register', function(req, res) {
-        Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+        Account.register(
+            new Account(
+                { username : req.body.username,
+                  university : req.body.university,
+                  phone : req.body.phone,
+                  email : req.body.email
+                }
+            ),
+            req.body.password,
+            function(err, account) {
             
 			if (err) {
                 return res.render('register', { account : account });
