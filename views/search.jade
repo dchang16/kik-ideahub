@@ -16,4 +16,33 @@ block content
 					a(href='/search') Search
 				li
 					a(href='/upload') Upload
+
+	div(class='container' style='padding-top: 10%;')
+		form(action='/search', method='post')
+			input(type='text' class='form-control' name='title' placeholder='Search')
+			br
+			label University
+			select(class='form-control' name='university')
+				option(value='none') None
+				option(value='waterloo') University of Waterloo
+			br	
+			label Industry
+			select(class='form-control' name='industry')
+				option(value='none') None
+				option(value='Software') Software
+				option(value='Engineer') Engineer
+				option(value='Design') Design
+				option(value='Other') Other
+			br			
+			label Positions
+			select(class='form-control' name='positions')
+				option(value='none') None
+				option(value='Software') Software
+				option(value='Engineer') Engineer
+				option(value='Design') Design
+				option(value='Business') Business
+				option(value='Other') Other
+			br
+
+			input(type='submit' class='btn btn-default btn-block' value='Search')
 		
