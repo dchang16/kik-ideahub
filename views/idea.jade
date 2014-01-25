@@ -18,5 +18,12 @@ block content
 					a(href='/upload') Upload
 
 	div(class='container' style='padding-top: 30px;')
+		h1 #{collection.title}
+		img(src='data:image/png;base64,' + collection.img.data.toString('base64') style='width:200px;')
+		br
+		label Pitch:
+		p #{collection.pitch}
+		label Looking for:
+		p #{collection.positions}
+		
 
-	p #{collection.title}
