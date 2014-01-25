@@ -4,49 +4,16 @@ block content
 
 
 	form(action='/upload', enctype='multipart/form-data',  method='post')
-		form(role='form')
-				div(class='form-group')
-					label(for='title') Title
-					input(type='text' id='title' class='form-control' placeholder='Enter Title Here')
-					br
-					label(for='pitch') Pitch
-					textarea(class='form-control' rows=3)
-
-
-		label() Industry
-		div(class='btn-group btn-group-justified' data-toggle='buttons')
-			label(class='btn btn-primary' for='artscreativedesign') Arts/Creative Design
-				input(type='radio' name='option' value="artscreativedesign" id='artscreativedesign')
-			label(class='btn btn-primary' for='informationtechnology') Information Technology
-				input(type='radio' name='option' value='informationtechnology' id='informationtechnology')
-			label(class='btn btn-primary' for='naturalscience') Natural Science
-				input(type='radio' name='option' value=naturalscience id='naturalscience')
-			label(class='btn btn-primary' for='other') Other
-				input(type='radio' name='option' value='other' id='other')
+		input(type='text' name='title' placeholder='Idea')
 		br
+		textarea(name='pitch' rows='3' placeholder='Pitch')
 		br
-		label() Positions
-		form(class='form-inline')
-			div(class='col-lg-6')
-				div(class='input-group')
-					input(type='text' class='form-control')
-					span(class='input-group-addon') Developer(s)
-				div(class='input-group')
-					input(type='text' class='form-control')
-					span(class='input-group-addon') Business analysist(s)
-				div(class='input-group')
-					input(type='text' class='form-control')
-					span(class='input-group-addon') position 3(s)
-				div(class='input-group')
-					input(type='text' class='form-control')
-					span(class='input-group-addon') position 4(s)
-				div(class='input-group')
-					input(type='text' class='form-control')
-					span(class='input-group-addon') position 5 (s)
-
+		input(type='text' name='positions' placeholder='Positions')
 		br
+		input(type='text' name='website' placeholder='Website')
 		br
-		input(type='file', accept='image/gif, image/jpeg, image/png',  name='ideaImage')
+		input(type='text' name='industry' placeholder='Industry')
 		br
+		input(type='file', accept='image/gif, image/jpeg, image/png', name='ideaImage')
 		br
-		input(type='submit',  class='btn',  value='Upload file')
+		input(type='submit' class='btn' value='Submit')
