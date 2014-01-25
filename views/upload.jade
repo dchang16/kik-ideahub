@@ -1,19 +1,45 @@
 extends layout
 
 block content
+	nav(class='navbar navbar-default navbar-static-top navbar-inverse' role='navigation')
+		div(class='navbar-header')
+			button(type='button' class='navbar-toggle' data-toggle='collapse' data-target='#menu')
+				span(class='sr-only')
+				span(class='icon-bar')
+				span(class='icon-bar')
+				span(class='icon-bar')
+			a(class='navbar-brand' href='/main') Idea Hub
 
-
-	form(action='/upload', enctype='multipart/form-data',  method='post')
-		input(type='text' name='title' placeholder='Idea')
-		br
-		textarea(name='pitch' rows='3' placeholder='Pitch')
-		br
-		input(type='text' name='positions' placeholder='Positions')
-		br
-		input(type='text' name='website' placeholder='Website')
-		br
-		input(type='text' name='industry' placeholder='Industry')
-		br
-		input(type='file', accept='image/gif, image/jpeg, image/png', name='ideaImage')
-		br
-		input(type='submit' class='btn' value='Submit')
+		div(id='menu' class='collapse navbar-collapse')
+			ul(class='nav navbar-nav')
+				li
+					a(href='/search') Search
+				li
+					a(href='/upload') Upload
+		
+	div(class='container' style='padding-top: 10%;')
+		form(action='/upload', enctype='multipart/form-data',  method='post')
+			input(type='text' class='form-control' name='title' placeholder='Idea')
+			br
+			textarea(name='pitch' class='form-control' rows='3' placeholder='Pitch')
+			br
+			label Industry
+			select(class='form-control' name='industry')
+				option(value='Software') Software
+				option(value='Engineer') Engineer
+				option(value='Design') Design
+				option(value='Other') Other
+			br			
+			label Positions
+			select(class='form-control' name='positions')
+				option(value='Software') Software
+				option(value='Engineer') Engineer
+				option(value='Design') Design
+				option(value='Business') Business
+				option(value='Other') Other
+			br
+			input(type='text' class='form-control' name='website' placeholder='Website')
+			br
+			input(type='file', class='btn' accept='image/gif, image/jpeg, image/png', name='ideaImage')
+			br
+			input(type='submit' class='btn btn-default btn-block' value='Submit')
