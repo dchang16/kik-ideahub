@@ -100,6 +100,24 @@ module.exports = function (app) {
 	    })(req, res, next);
 	});
 
+    app.get('/mainpopular', function(req, res, next) {
+        passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
+        console.log(req.user);
+        Idea.findPopularIdeas(function (err, collection){
+            if(err){
+                res.send({found: false, error: "No ideas found" });
+            }else{
+                console.log("BEGIN------------GET IDEAS BY ID----------------------BEGIN");
+                console.log(collection);
+                console.log("END--------------GET IDEAS BY ID------------------------END");
+                res.render('main', { user : req.user, collection : collection } );
+            }
+        });
+
+        })(req, res, next);
+    });
+
     app.get('/search', function(req, res) {
         res.render('search', { user : req.user });
     });

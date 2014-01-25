@@ -9,7 +9,6 @@ var app = {
 				console.log('disable');
 				document.getElementById('likeBtn').disabled='true';
 			}
-			console.log(id);
 			$.ajax({
 				type: 'GET',
 				url: '/like:' + id,
@@ -26,7 +25,17 @@ var app = {
 		})
 	},
 
+	filterFeed: function() {
+		$('html').on('click', '#popular', function() {
+			window.location.href='/mainpopular';
+		})
+		$('html').on('click', '#newest', function() {
+			window.location.href='/main';
+		})
+	},
+
 	init:jQuery(function($) {
 		app.likeIdea();
+		app.filterFeed();
 	})	
 };

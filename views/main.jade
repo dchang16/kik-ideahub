@@ -18,8 +18,8 @@ block content
 					a(href='/upload') Upload
 
 	div(class='btn-group btn-group-justified wide')
-		a(type='button' class='btn btn-default') Newest
-		a(type='button' class='btn btn-default') Popular
+		a(type='button' class='btn btn-default' id='newest') Newest
+		a(type='button' class='btn btn-default' id='popular') Popular
 
 	for item in collection
 		a(href='/idea:#{item._id}')

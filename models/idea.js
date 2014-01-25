@@ -52,6 +52,40 @@ function findRecentIdeas(callback) {
     );
 }
 
+function findPopularIdeas(callback) {
+    module.exports.find(
+        null,
+        null,
+        {
+            sort: 
+            {
+                score: -1
+            },
+
+            limit: 10
+        },
+        function (err, collection){
+            var i=0;
+            var instanceArray = new Array();
+            for(;i < collection.length; i++){
+                var instance = ({
+                    _id : collection[i]._id,
+                    title : collection[i].title,
+                    pitch : collection[i].pitch,
+                    positions: collection[i].positions,
+                    uploadDate : collection[i].uploadDate,
+                    img : {data: collection[i].img.data, contentType: collection[i].img.contentType},
+                    industry : collection[i].industry,
+                    score : collection[i].score
+                    
+                })
+                instanceArray.push(instance);
+            }
+            callback(null, instanceArray);
+        }   
+    );
+}
+
 function findIdeaByID(id, callback) {
 	module.exports.findById(id, 
 		function(err, collection) {
@@ -102,3 +136,4 @@ function updateScore( id, score, callback ) {
 module.exports.findRecentIdeas = findRecentIdeas;
 module.exports.findIdeaByID = findIdeaByID;
 module.exports.updateScore = updateScore;
+module.exports.findPopularIdeas = findPopularIdeas;
