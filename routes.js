@@ -15,11 +15,11 @@ module.exports = function (app) {
             if (err) { return next(err);}
             var imgPath = req.files.ideaImage.path;
             var idea = new Idea;
-            idea.img.title = req.body.title;
-            idea.img.pitch = req.body.pitch;
-            idea.img.positions = [req.body.positions];
-            idea.img.website = req.body.website;
-            idea.img.industry = req.body.industry;
+            idea.title = req.body.title;
+            idea.pitch = req.body.pitch;
+            idea.positions = [req.body.positions];
+            idea.website = req.body.website;
+            idea.industry = req.body.industry;
             idea.img.data = fs.readFileSync(imgPath);
             idea.img.contentType = req.files.ideaImage.type;
             idea.save(function(err, idea){
@@ -81,8 +81,18 @@ module.exports = function (app) {
 	app.get('/main', function(req, res, next) {
 	  passport.authenticate('local', function(err, user, info) {
 		if (err) { return next(err); }
-		res.render('main', { user : req.user });
-		console.log(req.user);
+
+        Idea.findRecentIdeas(function (err, collection){
+            if(err){
+                res.send({found: false, error: "No ideas found" });
+            }else{
+                console.log("BEGIN------------GET IDEAS BY ID----------------------BEGIN");
+                console.log(collection);
+                console.log("END--------------GET IDEAS BY ID------------------------END");
+                res.render('main', { user : req.user, collection : collection } );
+            }
+        });
+
 	    })(req, res, next);
 	});
 
