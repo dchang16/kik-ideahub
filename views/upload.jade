@@ -1,0 +1,51 @@
+extends layout
+
+block content
+
+
+	form(role='form')
+			div(class='form-group')
+				label(for='title') Title
+				input(type='text' id='title' class='form-control' placeholder='Enter Title Here')
+				br
+				label(for='pitch') Pitch
+				textarea(class='form-control' rows=3)
+
+
+	label() Industry
+	div(class='btn-group btn-group-justified' data-toggle='buttons')
+		label(class='btn btn-primary' for='artscreativedesign') Arts/Creative Design
+			input(type='radio' name='option' id='artscreativedesign')
+		label(class='btn btn-primary' for='informationtechnology') Information Technology
+			input(type='radio' name='option' id='informationtechnology')
+		label(class='btn btn-primary' for='naturalscience') Natural Science
+			input(type='radio' name='option' id='naturalscience')
+		label(class='btn btn-primary' for='other') Other
+			input(type='radio' name='option' id='other')
+	br
+	br
+	label() Positions
+	form(class='form-inline')
+		div(class='col-lg-6')
+			div(class='input-group')
+				input(type='text' class='form-control')
+				span(class='input-group-addon') Developer(s)
+			div(class='input-group')
+				input(type='text' class='form-control')
+				span(class='input-group-addon') Business analysist(s)
+			div(class='input-group')
+				input(type='text' class='form-control')
+				span(class='input-group-addon') position 3(s)
+			div(class='input-group')
+				input(type='text' class='form-control')
+				span(class='input-group-addon') position 4(s)
+			div(class='input-group')
+				input(type='text' class='form-control')
+				span(class='input-group-addon') position 5 (s)
+
+	br
+	br
+	input(type='file' name='ideaphoto' value='' id='ideaimage')
+	br
+	br
+	input(type='submit' name='submit' id='submitform' value='Submit')

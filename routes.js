@@ -2,6 +2,10 @@ var passport = require('passport'),
     Account = require('./models/account');
 module.exports = function (app) {
     
+    app.get('/upload', function(req,res){
+        res.render('upload',{user : req.user });
+    });
+
     app.get('/', function (req, res) {
         res.render('home', { user : req.user });
     });
