@@ -3,7 +3,7 @@ var passport = require('passport'),
 module.exports = function (app) {
     
     app.get('/', function (req, res) {
-        res.render('index', { user : req.user });
+        res.render('home', { user : req.user });
     });
 
     app.get('/register', function(req, res) {
@@ -36,7 +36,6 @@ module.exports = function (app) {
 	
 	app.get('/home', function(req, res, next) {
 	  passport.authenticate('local', function(err, user, info) {
-	  console.log(login);
 		if (err) { return next(err); }
 		if (!user) { return res.redirect('/login'); }
 		  res.render('home', { user : req.user });

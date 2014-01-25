@@ -1,4 +1,18 @@
 extends layout
 
 block content
-	h1 This is the home page
+	div(data-role='collapsible' data-colapsed-icon='carat-d' data-expanded-icon='carat-u' data-iconpos='right' data-theme='b' data-content-theme='b' data-collapsed='false')
+		h4(align='center' style='font-size:30px;') Login
+		form(action='/login', method='post')
+			input(type='text' name='username' placeholder='Username')
+			input(type='password' name='password' placeholder='Password')
+			input(type='submit' class='btn btn-primary' value='Login')
+
+	div(data-role='collapsible' data-colapsed-icon='carat-d' data-expanded-icon='carat-u' data-iconpos='right' data-theme='b' data-content-theme='b' data-collapsed='true')
+		h4(align='center') Register
+		form(action='/register', method='post')
+			input(type='text' name='username' placeholder='Username')
+			input(type='password' name='password' placeholder='Password')
+			input(type='email' name='email' placeholder='Email')
+			input(type='text' name='University' placeholder='University')
+			input(type='submit' class='btn btn-primary' value='Register')
