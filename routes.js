@@ -32,17 +32,21 @@ module.exports = function (app) {
             idea.img.data = fs.readFileSync(imgPath);
             idea.img.contentType = req.files.ideaImage.type;
             idea.save(function(err, idea){
-                if(err) { console.log("err: " + err); return next(err); }
-                else{
-                    //console.log(req.user);
+                if(err) { console.log("err: " + err); return next(err); 
+                }else{
                     req.user.ideas.push(idea);
                     req.user.save(function(err, req) {
-                         if(err) { console.log("err: " + err); return next(err); }
-                         else{
-                            //console.log(req.user); 
-                         }
+                        if(err) { console.log("err: " + err); return next(err); 
+                        }else{
+                            Idea.findRecentIdeas(function (err, collection){
+                                if(err){
+                                    res.send({found: false, error: "No ideas found" });
+                                }else{
+                                    res.render('main', { user : req.user, collection : collection } );
+                                }
+                            });
+                        }
                     });
-                    res.render('main', {user : req.user });
                 }
             });
         })(req, res, next);

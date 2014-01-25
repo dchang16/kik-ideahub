@@ -69,5 +69,36 @@ function findIdeaByID(id, callback) {
 		})
 }
 
+function updateScore( id, score, callback ) {
+	module.exports.findByIdAndUpdate(
+	id, {
+		score: score
+	}, function(err, ins){
+		if (err) {
+			callback(err)
+		}
+		else {
+			console.log(ins);
+			var instance = ({
+				_id : ins._id,
+				title : ins.title,
+				pitch : ins.pitch,
+				positions: ins.positions,
+				uploadDate : ins.uploadDate,
+				img : {data: ins.img.data, contentType: ins.img.contentType},
+				industry : ins.industry,
+			})
+			callback(null, instance);
+		}
+	});	
+}
+
+// Idea.updateScore( collection[0]._id, collection[0].score + 3 , 
+//      function ( err ) {
+//          if(err) throw(err);
+//      });
+
+
 module.exports.findRecentIdeas = findRecentIdeas;
 module.exports.findIdeaByID = findIdeaByID;
+module.exports.updateScore = updateScore;
