@@ -1,8 +1,4 @@
 kik-ideahub
 ===========
 
-Idea Hub
-
-Clone to your desktop, and navigate to kik-ideahub folder. 
-Open up node.js command prompt, type in node app
-Open up your favourite browser, and type in localhost:3000
+Idea Hub is a social media platform for University students to collaborate and contribute ideas to a hub. 
