@@ -8,11 +8,13 @@ var path = require('path'),
 
 var app = express();
 
+app.use(logfmt.requestLogger());
+var port = Number(process.env.PORT || 5000);
+
 // Configuration
 app.configure(function(){
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
-    app.set('view options', { layout: false });
 
     app.use(express.logger());
     app.use(express.bodyParser());
@@ -26,14 +28,8 @@ app.configure(function(){
 
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
-});
+    app.use('/public', express.static(__dirname + '/public'));
 
-app.configure('development', function(){
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-app.configure('production', function(){
-    app.use(express.errorHandler());
 });
 
 // Configure passport
@@ -50,6 +46,8 @@ mongoose.connect('mongodb://d26chang:hackathon@troup.mongohq.com:10033/ideahub')
 // Setup routes
 require('./routes')(app);
 
-http.createServer(app).listen(3000, '127.0.0.1', function() {
-    console.log("Express server listening on %s:%d in %s mode", '127.0.0.1', 3000, app.settings.env);
+var server = http.createServer(app);
+server.listen(port, function() {
+    console.log("Listening on " + port);
 });
+

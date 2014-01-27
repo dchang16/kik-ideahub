@@ -1,5 +1,5 @@
 {
-  "name": "passport-local-mongoose-examples",
+  "name": "ideahub",
   "version": "0.1.0",
   "main": "app.js",
   "private": "true",
@@ -11,6 +11,5 @@
     "passport-local": "0.1.x",
     "passport-local-mongoose": "~0.2.5",
     "logfmt": "~0.18.1",
-    "formidable": "~1.0.14"
   }
 }
