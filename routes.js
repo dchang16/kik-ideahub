@@ -19,6 +19,7 @@ module.exports = function (app) {
             idea.website = req.body.website;
             idea.industry = req.body.industry;
             idea.img.data = fs.readFileSync(imgPath);
+            console.log('idea.img.data is ' + idea.img.data);
             idea.img.contentType = req.files.ideaImage.type;
             idea.uid = req.user._id;
             idea.university = req.user.university;
@@ -44,7 +45,7 @@ module.exports = function (app) {
     });
 
     app.get('/', function (req, res) {
-        res.render('home', { user : req.user });
+        res.redirect('/main');
     });
 
     app.post('/register', function(req, res) {
@@ -85,7 +86,6 @@ module.exports = function (app) {
 	app.get('/main', function(req, res, next) {
 	  passport.authenticate('local', function(err, user, info) {
 		if (err) { return next(err); }
-        console.log(req.user);
         Idea.findRecentIdeas(function (err, collection){
             if(err){
                 res.send({found: false, error: "No ideas found" });
@@ -103,7 +103,6 @@ module.exports = function (app) {
     app.get('/mainpopular', function(req, res, next) {
         passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
-        console.log(req.user);
         Idea.findPopularIdeas(function (err, collection){
             if(err){
                 res.send({found: false, error: "No ideas found" });
@@ -144,17 +143,19 @@ module.exports = function (app) {
     });
 
 
-    app.get('/idea:id', function(req, res) {
-        var id = req.params.id.substring(1);
-        console.log('id is' + id);
-        Idea.findIdeaByID(id, function(err, collection) {
-            if(err) {
-                console.log('Could not find ID')
-            }
-            else {
-                res.render('idea', {collection : collection});
-            }
-        });
+    app.get('/idea:id', function(req, res, next) {
+        passport.authenticate('local', function(err, user, info) {
+            if (err) { return next(err); }
+            var id = req.params.id.substring(1);
+            Idea.findIdeaByID(id, function(err, collection) {
+                if(err) {
+                    console.log('Could not find ID')
+                }
+                else {
+                    res.render('idea', {user : req.user, collection : collection});
+                }
+            });
+        })(req, res, next);
     });
 
     app.get('/like:id', function(req,res) {

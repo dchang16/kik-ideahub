@@ -16,10 +16,19 @@ block content
 					a(href='/search') Search
 				li
 					a(href='/upload') Upload
+				if (!user)
+					li
+						a(href='/home') Login
+				else
+					li
+						a(href='logout') Logout
 
 	div(class='container' style='padding-top: 30px;' id='#{collection._id}')
 		h1 #{collection.title}
-		img(src='data:image/png;base64,' + collection.img.data.toString('base64') style='width:200px;')
+		if collection.img.data.toString('base64') == ''
+			img(src='img/lightbulb.png' style='width:200px');
+		else
+			img(src='data:image/png;base64,' + collection.img.data.toString('base64') style='width:200px;')
 		br
 		label Pitch:
 		p #{collection.pitch}
@@ -27,6 +36,7 @@ block content
 		p #{collection.industry}
 		label Network:
 		p #{collection.university}
-		button(class='btn btn-primary' id='likeBtn') Like
-		p(id='votemsg')
+		if (user)
+			button(class='btn btn-primary' id='likeBtn') Like
+			p(id='votemsg')
 

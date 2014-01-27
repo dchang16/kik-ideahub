@@ -34,8 +34,27 @@ var app = {
 		})
 	},
 
+	checkUpload: function() {
+		$('#uploadIdea').submit(function(ev) {
+			ev.preventDefault();
+			var idea = document.getElementById('ideatxt');
+			var pitch = document.getElementById('pitchtxt');
+			if(idea.value == '') {
+				alert('Please enter your idea title');
+			}
+			else if(pitch.value == '') {
+				alert('Please enter your pitch');
+			}
+			else {
+				document.getElementById('uploadIdea').submit();
+			}
+		})
+	},
+
+
 	init:jQuery(function($) {
 		app.likeIdea();
 		app.filterFeed();
+		app.checkUpload();
 	})	
 };

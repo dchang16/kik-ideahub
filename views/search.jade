@@ -16,6 +16,13 @@ block content
 					a(href='/search') Search
 				li
 					a(href='/upload') Upload
+				if (!user)
+					li
+						a(href='/home') Login
+				else
+					li
+						a(href='logout') Logout
+
 
 	div(class='container' style='padding-top: 30px;')
 		form(action='/search', method='post')
